@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Maps - Ghent</title>
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Tim Ysewyn" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- http://t.co/dKP3o1e -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- JS Scripts -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="js/gmaps.js"></script>
+    <script src="js/custom.js"></script>
+</head>
+
+<body>
+    <div id="map-canvas"></div>
+    <script>
+        $(document).ready(function () {
+            initiateMap('ghent');
+        });
+    </script>
+</body>
+
+</html>

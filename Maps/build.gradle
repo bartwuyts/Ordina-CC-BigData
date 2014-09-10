@@ -1,0 +1,73 @@
+configurations.all {
+	resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+		if (details.requested.group == 'org.springframework') {
+			details.useVersion this.properties["spring.version"]
+		}
+		if (details.requested.group == 'org.springframework.boot') {
+			details.useVersion this.properties["spring.boot.version"]
+		}
+	}
+}
+
+buildscript {
+	repositories {
+	    mavenLocal()
+	    mavenCentral()
+	    maven { url "http://repo.spring.io/libs-release" }
+	}
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:" + this.properties["spring.boot.version"])
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+apply from: 'eclipse.gradle'
+apply from: 'idea.gradle'
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+jar {
+    baseName = 'Ordina-CC-BigData-Maps'
+    version =  '0.1.0'
+}
+
+dependencies {
+	
+	// Spring
+    compile("org.springframework.boot:spring-boot-autoconfigure")
+    compile("org.springframework.boot:spring-boot-starter-integration")
+    compile("org.springframework.boot:spring-boot-starter-logging")
+    compile("org.springframework.boot:spring-boot-starter-tomcat")
+    compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.integration:spring-integration-java-dsl:+")
+	
+	// Apache Commons
+    compile("commons-validator:commons-validator:1.4.0")
+	
+	// JSON
+    compile("org.json:json:20140107")
+	
+	// GSON
+	compile("com.google.code.gson:gson:2.3")
+	
+	// MongoDB
+    compile("org.mongodb:mongo-java-driver")
+	
+	// YAML support for configuration
+	compile("org.yaml:snakeyaml")
+    
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}

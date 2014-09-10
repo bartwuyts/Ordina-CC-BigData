@@ -1,0 +1,6 @@
+# mongodb configuration
+mongodb:
+  servers:
+    - host: localhost
+      port: 27017
+  db: Ordina-CC-BigData-Maps
